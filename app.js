@@ -1,17 +1,41 @@
-// const name = require("./utils.js")
-const validator = require("validator")
-const add = require("./utils.js")
-const fs = require('fs')
-const notes = require("./notes.js")
+const getNotes = require("./notes.js")
 const chalk = require("chalk")
+const yargs = require('yargs')
 
-fs.writeFileSync('notes.txt', 'My name is Faiz Ikhwan. ')
-fs.appendFileSync("notes.txt", "I am the tech lead. ")
+// Create add command
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note',
+    handler: function () {
+        console.log('Adding a new note!')
+    }
+})
 
-const sum = add(4, 6)
+// Create remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Removing a note',
+    handler: function() {
+        console.log('Removing a note!')
+    }
+})
 
-// console.log("name: " + name)
-console.log("sum: " + sum)
-console.log("notes: " + notes())
-console.log(validator.isEmail("faizikhwantop@gmail.com"))
-console.log(chalk.green("Success"))
+// Create a list command
+yargs.command({
+    command: 'list',
+    describe: 'Listing note(s)',
+    handler: function() {
+        console.log('Listing note(s)!')
+    }
+})
+
+// Create read command
+yargs.command({
+    command: 'read',
+    describe: 'Reading note(s)',
+    handler: function() {
+        console.log('Reading note(s)!')
+    }
+})
+
+console.log(yargs.argv)
