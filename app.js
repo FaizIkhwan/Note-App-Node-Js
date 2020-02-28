@@ -6,7 +6,7 @@ const yargs = require('yargs')
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
-    handler: function (argv) {
+    handler(argv) {
         notes.addNotes(argv.title, argv.body)
     },
     builder: {
@@ -34,7 +34,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv) {
+    handler(argv) {
         notes.removeNote(argv.title)
     }
 })
@@ -43,7 +43,7 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'Listing note(s)',
-    handler: function() {
+    handler() {
         console.log('Listing note(s)!')
     }
 })
@@ -52,7 +52,7 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Reading note(s)',
-    handler: function() {
+    handler() {
         console.log('Reading note(s)!')
     }
 })
